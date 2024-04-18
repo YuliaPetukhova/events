@@ -41,13 +41,13 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="css">
 .container {
   display: block;
   position: absolute;
   width: 100%;
   height: 85%;
-  background: url("src/assets/лазер.jpg") no-repeat center center fixed;
+  background: url("/assets/лазер.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -110,7 +110,7 @@ export default defineComponent({
   }
 
   .calendar {
-    margin: 5em 0 0 0;
+    margin: 3em 0 0 0;
     color: #28776b;
   }
 }

@@ -1,49 +1,49 @@
 <script lang="ts">
 export default {
   methods: {
-    updateActivePlan(e: any) {
-      this.selectedButton = e.target.value
+    updateActivePlan(e: Event): void {
+      this.selectedButton = +(<HTMLInputElement>e.target).value;
     },
-    isActive(id: number): any {
-      return +this.selectedButton === id;
+    isActive(id: number): boolean {
+      return this.selectedButton === id;
     },
   },
   data: () => ({
-    selectedButton: 1,
+    selectedButton: 1 as number,
     buttons: [
       {
         id: 1,
-        icon: require("/public/assets/china.png"),
+        icon: new URL("/public/assets/china.png", import.meta.url).href,
         title: "China",
       },
       {
         id: 2,
-        icon: require("/public/assets/eng.png"),
+        icon: new URL("/public/assets/eng.png", import.meta.url).href,
         title: "English",
       },
       {
         id: 3,
-        icon: require("/public/assets/korean.png"),
+        icon: new URL("/public/assets/korean.png", import.meta.url).href,
         title: "Korean",
       },
       {
         id: 4,
-        icon: require("/public/assets/uzb.png"),
+        icon: new URL("/public/assets/uzb.png", import.meta.url).href,
         title: "UZ",
       },
       {
         id: 5,
-        icon: require("/public/assets/russia.png"),
+        icon: new URL("/public/assets/russia.png", import.meta.url).href,
         title: "RU",
       },
       {
         id: 6,
-        icon: require("/public/assets/japan.png"),
+        icon: new URL("/public/assets/japan.png", import.meta.url).href,
         title: "Japan",
       },
       {
         id: 7,
-        icon: require("/public/assets/german.png"),
+        icon: new URL("/public/assets/german.png", import.meta.url).href,
         title: "German",
       },
     ],
@@ -57,7 +57,7 @@ export default {
       <input
           :id="`input-${idx}`"
           type="radio"
-          name="iman"
+          name="button-language"
           :value="option.id"
           :checked="isActive(option.id)"
           @input="updateActivePlan"
@@ -73,38 +73,42 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang='css'>
 .v-radio-label {
-  display: inline-flex;
+  cursor: pointer;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 3em 0;
-  border: 1px solid rgba(44, 62, 80, 0.4);
+  width: 6rem;
+  height: 5rem;
+  border-radius: 2em;
+  border: 1px solid rgba(111, 140, 169, 0.5);
   transition: all 200ms;
   background: rgb(255, 255, 255);
   color: rgb(44, 62, 80);
 }
 
 .v-radio-active {
-  box-shadow: 3px 3px 5px 0 rgba(1, 11, 21, 0.9);
+  cursor: pointer;
+  box-shadow: 3px 3px 15px 15px rgba(201, 25, 188, 0.21);
+  will-change: filter;
+  transition: filter 300ms;
 }
 
 .lang {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: center;
-  margin: 1em;
+  justify-content: space-between;
 }
 
 .lang-img {
-  width: 2em;
+  width: 3em;
 }
 
 .lang-item {
-  padding-right: 1rem;
+  padding: 1rem 0;
 }
 
 input[type="radio" i] {
