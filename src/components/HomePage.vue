@@ -1,14 +1,18 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import ShowCalendar from "./ShowCalendar.vue";
+import Login from "../components/Login.vue";
 
 export default defineComponent({
-  components: {ShowCalendar}
+  components: {Login, ShowCalendar}
 })
 </script>
 
 <template>
   <div class="container">
+    <div class="login-btn-container">
+      <login></login>
+    </div>
     <h1>Laser Show Samarqand</h1>
 
     <div class="content-box">
@@ -20,13 +24,10 @@ export default defineComponent({
       </h2>
 
       <div class="description">
-        Лазерное шоу ‒ это цветомузыкальная подсветка и проекции,<br>
-        которые сoздают невероятные визуальные эффекты. <br>
-        С помощью специального оборудoвaния и лазерных лучeй<br>
-        на фасадах зданий и архитектурных сооружений площади<br>
-        проецируются яркие и красочные изобpажения.<br>
+        Лазерное шоу ‒ это цветомузыкальная подсветка и проекции<br>
+        на фасадах зданий и архитектурных сооружений площади.<br>
         Музыкальное cопровождение, соответствующее каждому моменту шоу,<br>
-        создает aтмосферy волшебства и восторга.
+        создает aтмосферy волшебства.
       </div>
     </div>
 
@@ -59,15 +60,21 @@ export default defineComponent({
 
 .description {
   font-size: 20px;
-  margin-top: 2em;
+  margin-top: 3em;
   font-weight: bold;
   color: #ffffff;
+}
+
+.login-btn-container {
+  display: flex;
+  justify-content: end;
+  margin: 1.5em 1.5em;
 }
 
 @media (min-width: 768px) {
   .calendar {
     margin: 3em 0 0 0;
-    color: #28776b;
+    color: rgba(0, 0, 0, 0.99);
   }
 }
 </style>

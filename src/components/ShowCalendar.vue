@@ -56,8 +56,8 @@ export default defineComponent({
         });
       }
     },
-    getSelectedEvents () {
-      console.log('пока все события:',
+    getSelectedEvents() {
+      console.log('new события:',
           (this.calendarOptions.events as EventInput[]).filter(event => event.isNew));
     },
   },
@@ -127,7 +127,7 @@ export default defineComponent({
   border-radius: 42px;
   border-width: 0;
   box-shadow: rgba(119, 19, 75, 0.93) 0 2px 2px, rgba(201, 25, 125, 0.44) 0 8px 12px;
-  color: #FFFFFF;
+  color: #FFFFFF!important;
   cursor: pointer;
   display: flex;
   font-family: Quicksand, sans-serif;
