@@ -5,8 +5,8 @@ import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import {INITIAL_EVENTS, createEventId} from '../event-utils'
-import SelectLanguage from "../components/SelectLanguage.vue";
+import {INITIAL_EVENTS, createEventId} from '../../event-utils'
+import SelectLanguage from "./SelectLanguage.vue";
 
 export default defineComponent({
   components: {
@@ -124,10 +124,10 @@ export default defineComponent({
 .pay-show {
   background-color: initial;
   background-image: linear-gradient(rgba(201, 25, 125, 0.44), rgb(201, 25, 125) 50%);
-  border-radius: 42px;
+  border-radius: 10px;
   border-width: 0;
   box-shadow: rgba(119, 19, 75, 0.93) 0 2px 2px, rgba(201, 25, 125, 0.44) 0 8px 12px;
-  color: #FFFFFF!important;
+  color: #FFFFFF !important;
   cursor: pointer;
   display: flex;
   font-family: Quicksand, sans-serif;

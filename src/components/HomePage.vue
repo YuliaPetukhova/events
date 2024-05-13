@@ -1,41 +1,24 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-import ShowCalendar from "./ShowCalendar.vue";
+// import ShowCalendar from "./Samarkand/ShowCalendar.vue";
 import Login from "../components/Login.vue";
+import MainPageMenu from "../components/MainPageMenu.vue";
+import SamarkandMainPage from "../components/Samarkand/SamarkandMainPage.vue";
 
 export default defineComponent({
-  components: {Login, ShowCalendar}
+  components: {SamarkandMainPage, MainPageMenu, Login,},
 })
 </script>
 
 <template>
   <div class="container">
+    <MainPageMenu></MainPageMenu>
+
     <div class="login-btn-container">
-      <login></login>
+      <Login></Login>
     </div>
-    <h1>Laser Show Samarqand</h1>
-
-    <div class="content-box">
-
-      <h2 class="about">
-        Лазерное шоу на плoщади Регистан в Самарканде ‒ это уникальная уcлуга,<br>
-        которая предлагает посетителям возможность окунуться<br>в атмосферу древнего города и насладиться его
-        великолепием.
-      </h2>
-
-      <div class="description">
-        Лазерное шоу ‒ это цветомузыкальная подсветка и проекции<br>
-        на фасадах зданий и архитектурных сооружений площади.<br>
-        Музыкальное cопровождение, соответствующее каждому моменту шоу,<br>
-        создает aтмосферy волшебства.
-      </div>
-    </div>
-
-    <div class="calendar">
-      <show-calendar></show-calendar>
-    </div>
-
   </div>
+
 </template>
 
 <style scoped lang="css">
@@ -43,38 +26,14 @@ export default defineComponent({
   display: block;
   position: absolute;
   width: 100%;
-  height: 85%;
+  height: 100%;
   background: url("/assets/лазер.jpg") no-repeat center center fixed;
   background-size: cover;
-}
-
-.content-box {
-  background-color: rgba(128, 128, 128, 0.8);
-}
-
-.about {
-  font-size: 21px;
-  margin-top: 4em;
-  color: #ffffff;
-}
-
-.description {
-  font-size: 20px;
-  margin-top: 3em;
-  font-weight: bold;
-  color: #ffffff;
 }
 
 .login-btn-container {
   display: flex;
   justify-content: end;
   margin: 1.5em 1.5em;
-}
-
-@media (min-width: 768px) {
-  .calendar {
-    margin: 3em 0 0 0;
-    color: rgba(0, 0, 0, 0.99);
-  }
 }
 </style>

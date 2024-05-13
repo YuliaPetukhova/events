@@ -52,6 +52,7 @@ export default {
 </script>
 
 <template>
+  <div class="select-language">Выбор языка шоу</div>
   <div class="lang">
     <div class="lang-item" v-for="(option, idx) in buttons" :key="`input-${idx}`">
       <input
@@ -74,6 +75,9 @@ export default {
 </template>
 
 <style scoped lang='css'>
+.select-language {
+  font-size: 20px;
+}
 .v-radio-label {
   cursor: pointer;
   display: flex;

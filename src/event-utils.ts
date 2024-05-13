@@ -15,7 +15,7 @@ export const INITIAL_EVENTS: EventInput[] = [
     {
         id: createEventId(),
         title: 'Lazer',
-        start: '2024-04-15T20:00:00',
+        start: '2024-05-15T20:00:00',
         iconUrl: 'russia.png',
         progress: '200$/2200$',
         isNew: false,
@@ -23,7 +23,7 @@ export const INITIAL_EVENTS: EventInput[] = [
     {
         id: createEventId(),
         title: 'Lazer',
-        start: '2024-04-10T20:00:00',
+        start: '2024-05-10T20:00:00',
         iconUrl: 'korean.png',
         progress: '300$',
         isNew: false,
@@ -31,7 +31,7 @@ export const INITIAL_EVENTS: EventInput[] = [
     {
         id: createEventId(),
         title: 'Lazer',
-        start: '2024-04-13T20:00:00',
+        start: '2024-05-13T20:00:00',
         iconUrl: 'china.png',
         progress: '400$',
         isNew: false,

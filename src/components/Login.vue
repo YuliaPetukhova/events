@@ -1,29 +1,115 @@
 <script>
+import * as vm from "vm";
+import axios from "axios";
+
 export default {
   name: 'Login',
   data: () => ({
-    password: '',
+    urlLogin: 'http://localhost/api/v1/family-auth/login',
+    urlRegistration: 'http://localhost/api/v1/family-auth/registration',
+    loading: false,
+    rules: [value => vm.checkApi(value)],
+    timeout: null,
+    isLogged: false,
+    stateObj: {
+      register: {
+        name: "Регистрация",
+        message: "У меня уже есть аккаунт. Войти."
+      },
+      login: {
+        name: "Войти",
+        message: "Регистрация"
+      }
+    },
+    errorMessage: "",
+    confirmPassword: "",
+    password: "",
     passwordRules: [
       value => {
         if (value?.length > 5) return true
 
-        return 'Пароль должен содержать от 5 символов.'
+        return "Пароль должен содержать от 5 символов."
       },
     ],
-    email: '',
+    email: "",
     emailRules: [
       value => {
         if (value) return true
 
-        return ' Введите e-mail'
+        return "Введите e-mail"
       },
       value => {
         if (/.+@.+\..+/.test(value)) return true
 
-        return 'E-mail не соответсвует типу test@test.test'
+        return "E-mail не соответсвует типу test@test.test"
       },
     ],
+
   }),
+  methods: {
+    async login() {
+      // this.loading = true;
+
+      // await axios.post(this.urlLogin, {
+      //   email: this.email,
+      //   password: this.password,
+      // }).then(({data}) => {
+      //       this.user = data.user;
+      //       this.isRegister = true;
+      //       window.localStorage.setItem('loginUser', JSON.stringify(this.user));
+      //       this.loading = false;
+      //       this.$refs.form.reset();
+      //       this.$router.push('/tickets');
+      //     }
+      // );
+
+      try {
+        // Отправка запроса на сервер
+        const response = await axios.post(this.urlLogin, {
+          email: this.email,
+          password: this.password,
+        });
+
+        // Обработка успешного ответа
+        const {data} = response;
+        this.user = data.user;
+        this.isLogged = true;
+        window.localStorage.setItem('loginUser', JSON.stringify(this.user));
+        this.loading = false;
+        this.$refs.form.reset();
+        this.$router.push('/tickets');
+      } catch (error) {
+        // Обработка ошибки
+        console.error('Ошибка входа:', error.message);
+        // Здесь вы можете показать сообщение об ошибке пользователю
+        // Например: this.errorMessage = 'Неверный логин или пароль';
+      }
+    },
+
+  register() {
+    const user = {
+      email: this.email,
+      password: this.password,
+    };
+
+    if (this.password === this.confirmPassword) {
+      this.isLogged = false;
+      this.errorMessage = "";
+      this.$refs.form.reset();
+      axios.post(this.urlRegistration, user);
+    } else {
+      this.errorMessage = "Пароли не совпадают"
+    }
+  }
+}
+,
+computed: {
+  toggleMessage: function () {
+    return this.isLogged ? this.stateObj.register.message : this.stateObj.login.message
+  }
+}
+,
+
 }
 </script>
 
@@ -52,24 +138,52 @@ export default {
           </v-card-actions>
         </v-sheet>
 
-          <v-form fast-fail @submit.prevent>
-            <v-text-field
-                class="form-field"
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-            ></v-text-field>
+        <v-form ref="form" fast-fail validate-on="submit lazy" @submit.prevent="isLogged ? register() : login()">
+          <v-text-field
+              class="form-field"
+              v-model="email"
+              name="email"
+              type="text"
+              :rules="emailRules"
+              label="E-mail"
+              required
+          ></v-text-field>
 
-            <v-text-field
-                class="form-field"
-                v-model="password"
-                :rules="passwordRules"
-                label="Пароль"
-            ></v-text-field>
+          <v-text-field
+              class="form-field"
+              v-model="password"
+              name="password"
+              type="password"
+              :rules="passwordRules"
+              label="Пароль"
+              required
+          ></v-text-field>
 
-            <v-btn class="mt-2" type="submit" block>Зарегистрироваться</v-btn>
-          </v-form>
+          <v-text-field
+              v-if="isLogged"
+              v-model="confirmPassword"
+              name="confirmPassword"
+              label="Повторите пароль"
+              type="password"
+              placeholder="Введите пароль"
+              required
+          ></v-text-field>
+          <div class="red--text"> {{ errorMessage }}</div>
+
+          <v-btn
+              :loading="loading"
+              class="mt-2"
+              type="submit"
+              block
+              value="log in"
+          >
+            {{ isLogged ? stateObj.register.name : stateObj.login.name }}
+          </v-btn>
+          <div class="grey--text mt-4" @click="isLogged = !isLogged;">
+            {{ toggleMessage }}
+          </div>
+
+        </v-form>
       </v-card>
     </template>
   </v-dialog>
@@ -86,6 +200,7 @@ export default {
 .form-field {
   padding-bottom: 1em;
 }
+
 .login-btn {
   background-color: white;
   cursor: pointer;
