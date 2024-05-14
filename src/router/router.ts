@@ -2,7 +2,8 @@ import {createWebHistory, createRouter, Router} from 'vue-router'
 import HomePage from "../components/HomePage.vue";
 import TicketPage from "../components/TicketPage.vue";
 import login from "../components/Login.vue";
-import SamarkandMainPage from "../components/Samarkand/SamarkandMainPage.vue";
+import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
+import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
 
 const routes = [
     {
@@ -21,6 +22,11 @@ const routes = [
         path: '/samarkand',
         component: SamarkandMainPage,
         name: 'Samarkand',
+    },
+    {
+        path: '/tashkent',
+        component: TashkentMainPage,
+        name: 'Tashkent',
     },
 ]
 

@@ -1,9 +1,10 @@
 <script lang="ts">
-import ShowCalendar from "../../components/Samarkand/ShowCalendar.vue"
-import {SamarkandTickets} from "../../data/SamarkandTickets";
+import ShowCalendar from "./ShowCalendar.vue"
+import {SamarkandTickets} from "../../../data/SamarkandTickets";
+import Cart from "@/components/cart/Cart.vue";
 
 export default {
-  components: {ShowCalendar},
+  components: {Cart, ShowCalendar},
   data() {
     return {
       SamarkandTickets,
@@ -15,7 +16,7 @@ export default {
 
 <template>
   <div class="container">
-    <h1 class="title">Билеты на все достопримечательности Самарканда</h1>
+    <h1 class="title">Билеты на достопримечательности Самарканда</h1>
     <v-expansion-panels multiple>
 
       <v-expansion-panel
@@ -34,18 +35,18 @@ export default {
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <v-expansion-panel :title="itemList.name" v-for="(itemList, index) in SamarkandTickets.data">
+      <v-expansion-panel class="panel" :title="itemList.name" v-for="(itemList, index) in SamarkandTickets.data">
         <v-expansion-panel-text class="panel-text" v-for="(ticket, ticketsIndex) in itemList.tickets">
           <div class="panel-content">
-            {{ticket.name}}
-            {{ticket.priceAdult}} sum
+            {{ ticket.name }}
+            {{ ticket.priceAdult }} sum
             <div>
               Взрослые
               <button @click="ticket.adultTicketsNumber--">-</button>
               <input type="number" v-model="ticket.adultTicketsNumber" min="0">
               <button @click="ticket.adultTicketsNumber++" class="counter">+</button>
             </div>
-            {{ticket.priceChild}} sum
+            {{ ticket.priceChild }} sum
             <div>
               Детские
               <button @click="ticket.childTicketsNumber--">-</button>
@@ -60,6 +61,7 @@ export default {
 
     </v-expansion-panels>
 
+    <Cart></Cart>
   </div>
 </template>
 
@@ -69,8 +71,6 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("/assets/лазер.jpg") no-repeat center center fixed;
-  background-size: cover;
 }
 
 .title {

@@ -9,6 +9,8 @@
     "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/timegrid": "^6.1.10",
     "@fullcalendar/vue3": "^6.1.10",
+    "@jamescoyle/vue-icon": "^0.1.2",
+    "@mdi/js": "^7.4.47",
     "@vueuse/rxjs": "^10.9.0",
     "axios": "^1.6.8",
     "axios-observable": "^2.0.0",

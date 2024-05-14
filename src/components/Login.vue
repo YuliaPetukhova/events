@@ -117,7 +117,7 @@ computed: {
   <v-dialog max-width="500">
     <template v-slot:activator="{ props: activatorProps }">
       <v-btn
-          class="login-btn"
+          color="green"
           v-bind="activatorProps"
           text="Войти"
           variant="flat"
@@ -199,23 +199,5 @@ computed: {
 
 .form-field {
   padding-bottom: 1em;
-}
-
-.login-btn {
-  background-color: white;
-  cursor: pointer;
-  display: flex;
-  font-family: Quicksand, serif;
-  justify-content: center;
-  margin: 0;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-}
-
-.login-btn:hover {
-  background-image: linear-gradient(rgb(201, 25, 125), rgb(255, 255, 255) 70%);
 }
 </style>

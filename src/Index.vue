@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import HomePage from "./components/HomePage.vue";
+import TopMenu from "@/components/topMenu/TopMenu.vue";
 </script>
 
 <template>
-  <router-view></router-view>
-  <!--  <home-page></home-page>-->
+  <div class="container">
+    <TopMenu></TopMenu>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped lang='css'>
-
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("/assets/tash.jpg") no-repeat center center fixed;
+}
 </style>
