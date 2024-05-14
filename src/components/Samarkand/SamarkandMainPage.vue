@@ -7,23 +7,9 @@ export default {
   data() {
     return {
       SamarkandTickets,
-      inputValues: [
-        {value: 0},
-      ],
-      gurEmirNumber: 0,
-      gurEmirNumber2: 0,
     };
   },
-  methods: {
-    increment() {
-      this.gurEmirNumber++;
-    },
-    decrement() {
-      if (this.gurEmirNumber > 0) {
-        this.gurEmirNumber--;
-      }
-    },
-  },
+
 };
 </script>
 
@@ -55,16 +41,16 @@ export default {
             {{ticket.priceAdult}} sum
             <div>
               Взрослые
-              <button @click="decrement()">-</button>
+              <button @click="ticket.adultTicketsNumber--">-</button>
               <input type="number" v-model="ticket.adultTicketsNumber" min="0">
-              <button @click="increment()" class="counter">+</button>
+              <button @click="ticket.adultTicketsNumber++" class="counter">+</button>
             </div>
             {{ticket.priceChild}} sum
             <div>
               Детские
-              <button @click="decrement()">-</button>
+              <button @click="ticket.childTicketsNumber--">-</button>
               <input type="number" v-model="ticket.childTicketsNumber" min="0">
-              <button @click="increment()" class="counter">+</button>
+              <button @click="ticket.childTicketsNumber++" class="counter">+</button>
             </div>
           </div>
 

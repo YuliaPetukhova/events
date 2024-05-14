@@ -1,6 +1,6 @@
 import {reactive} from 'vue'
-
-export const SamarkandTickets = reactive({
+import {ITicketGroup} from "../models/ITicketGroup";
+export const SamarkandTickets: {data: ITicketGroup[]} = reactive({
     data: [
         {
             'name': 'Памятники',
@@ -11,7 +11,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 1,
-                    'listName': 'Памятники',
                 },
                 {
                     'name': 'Площадь Регистан',
@@ -19,7 +18,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 8,
-                    'listName': 'Памятники',
                 },
                 {
                     'name': 'Мечеть Биби-Ханум',
@@ -27,7 +25,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 1,
-                    'listName': 'Памятники',
                 },
                 {
                     'name': 'Некрополь Шахи Зинда',
@@ -35,7 +32,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 2,
                     'childTicketsNumber': 1,
-                    'listName': 'Памятники',
                 },
                 {
                     'name': 'Мавзолей Рухабад',
@@ -43,7 +39,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 3,
                     'childTicketsNumber': 1,
-                    'listName': 'Памятники',
                 },
             ],
         },
@@ -56,7 +51,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Дом-музей Садриддина Айни',
@@ -64,7 +58,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 8,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Музей Улугбека',
@@ -72,7 +65,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 0,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Афрасиаб',
@@ -80,7 +72,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 2,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Краеведческий музей',
@@ -88,7 +79,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 3,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Арт-галерея «Счастливая птица»',
@@ -96,7 +86,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 3,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
                 {
                     'name': 'Мануфактура по производству шёлковой бумаги',
@@ -104,7 +93,6 @@ export const SamarkandTickets = reactive({
                     'priceChild': 20000,
                     'adultTicketsNumber': 3,
                     'childTicketsNumber': 1,
-                    'listName': 'Музеи',
                 },
             ],
         },
