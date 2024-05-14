@@ -48,22 +48,22 @@ export default {
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <v-expansion-panel title="Памятники">
-        <v-expansion-panel-text class="panel-text" v-for="(itemList, index) in SamarkandTickets.data">
+      <v-expansion-panel :title="itemList.name" v-for="(itemList, index) in SamarkandTickets.data">
+        <v-expansion-panel-text class="panel-text" v-for="(ticket, ticketsIndex) in itemList.tickets">
           <div class="panel-content">
-            {{ itemList.name }}
-            {{ itemList.priceAdult }} сум
-            {{ itemList.priceChild }} сум
+            {{ticket.name}}
+            {{ticket.priceAdult}} sum
             <div>
               Взрослые
               <button @click="decrement()">-</button>
-              <input type="number" v-model="itemList.adultTicketsNumber" min="0">
+              <input type="number" v-model="ticket.adultTicketsNumber" min="0">
               <button @click="increment()" class="counter">+</button>
             </div>
+            {{ticket.priceChild}} sum
             <div>
               Детские
               <button @click="decrement()">-</button>
-              <input type="number" v-model="itemList.childTicketsNumber" min="0">
+              <input type="number" v-model="ticket.childTicketsNumber" min="0">
               <button @click="increment()" class="counter">+</button>
             </div>
           </div>
