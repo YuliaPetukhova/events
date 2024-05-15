@@ -1,7 +1,7 @@
 <script lang="ts">
 import {mergeProps} from 'vue'
 import router from '../../router/router'
-import Login from "@/components/Login.vue";
+import Login from "@/components/auth/Login.vue";
 
 export default {
   components: {Login},

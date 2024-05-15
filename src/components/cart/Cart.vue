@@ -1,5 +1,4 @@
 <script lang="ts">
-
 import SvgIcon from '@jamescoyle/vue-icon';
 import {mdiCartOutline} from '@mdi/js';
 
@@ -28,14 +27,11 @@ export default {
 };
 </script>
 
-
 <template>
   <div class="bottom-cart">
     <v-btn @click="openCart">
       <svg-icon type="mdi" :path="path"></svg-icon>
     </v-btn>
-
-    <v-btn class="byu-btn" color="green">Купить сразу</v-btn>
 
     <v-dialog v-model="cartDialog" max-width="600">
       <v-card>
@@ -48,7 +44,7 @@ export default {
             {{ item.name }} - {{ item.price }} руб.
           </div>
         </v-card-text>
-        <v-btn color="green">Купить</v-btn>
+        <v-btn color="green" to="/tickets">Купить</v-btn>
       </v-card>
     </v-dialog>
   </div>
@@ -66,11 +62,5 @@ export default {
   right: 0.3rem;
   top: 0.1rem;
   padding-bottom: 1em;
-}
-
-.byu-btn {
-  position: fixed;
-  right: 6rem;
-  bottom: 1em;
 }
 </style>

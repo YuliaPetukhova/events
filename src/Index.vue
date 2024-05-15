@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import TopMenu from "@/components/topMenu/TopMenu.vue";
+import Cart from "@/components/cart/Cart.vue";
 </script>
 
 <template>
   <div class="container">
     <TopMenu></TopMenu>
     <router-view></router-view>
+    <Cart></Cart>
   </div>
 </template>
 

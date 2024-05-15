@@ -1,7 +1,6 @@
 <script lang="ts">
 import {defineComponent} from "vue";
-// import ShowCalendar from "./Samarkand/ShowCalendar.vue";
-import Login from "../components/Login.vue";
+import Login from "./auth/Login.vue";
 import SamarkandMainPage from "./city/Samarkand/MainPage.vue";
 
 export default defineComponent({
@@ -14,5 +13,4 @@ export default defineComponent({
 </template>
 
 <style scoped lang="css">
-
 </style>

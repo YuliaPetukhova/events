@@ -1,7 +1,7 @@
 import {createWebHistory, createRouter, Router} from 'vue-router'
 import HomePage from "../components/HomePage.vue";
-import TicketPage from "../components/TicketPage.vue";
-import login from "../components/Login.vue";
+import TicketPage from "../components/ticket/TicketPage.vue";
+import login from "../components/auth/Login.vue";
 import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
 import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
 
