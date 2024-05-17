@@ -222,5 +222,210 @@ export const useTicketStore = defineStore('ticketStore', {
             ] as ITicketGroup[],
         } as ICity,
 
+        bukhara: {
+            tickets: [
+                {
+                    name: 'Памятники',
+                    tickets: [
+                        {
+                            name: 'Площадь Ляби-Хауз',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Кош-медресе',
+                            priceAdult: 65000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 8,
+                        },
+                        {
+                            name: 'Мавзолей Исмаила Самани',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Мавзолей Чашма-Аюб',
+                            priceAdult: 40000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 2,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Мечеть Боло-Хауз',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Архитектурный ансамбль Пои Калон',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Медресе Улугбека',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Мечеть Магоки-Аттори',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Мавзолей Саманидов',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Крепость Арк',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Медресе Абдулазиз-хана',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                    ],
+                },
+                {
+                    name: 'Музеи',
+                    tickets: [
+                        {
+                            name: 'Музей воды',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Ситораи Мохи-хоса',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 8,
+                        },
+                        {
+                            name: 'Дом-музей Файзуллы Ходжаева',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Музей искусств имени Камолиддина Бехзода',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 2,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Музей Мастерской Кукол',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Музей Авиценны, с. Афшана',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Музей чеканки по металлу',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 3,
+                            childTicketsNumber: 1,
+                        },
+                    ],
+                },
+            ] as ITicketGroup[],
+        } as ICity,
+
+        khiva: {
+            tickets: [
+                {
+                    name: 'Памятники',
+                    tickets: [
+                        {
+                            name: 'Джума-мечеть',
+                            priceAdult: 50000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Мавзолей Пахлаван Махмуда',
+                            priceAdult: 38000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 8,
+                        },
+                        {
+                            name: 'Таш-Хаули',
+                            priceAdult: 64000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Цитадель Ичан-Кала',
+                            priceAdult: 51000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Крепость Куня-Арк',
+                            priceAdult: 127000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                        {
+                            name: 'Медресе и минарет Ислам Ходжи',
+                            priceAdult: 50000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                    ],
+                },
+                {
+                    name: 'Музеи',
+                    tickets: [
+                        {
+                            name: 'Медресе Кази Калон - Музей музыкального искусства',
+                            priceAdult: 30000,
+                            priceChild: 20000,
+                            adultTicketsNumber: 0,
+                            childTicketsNumber: 1,
+                        },
+                    ],
+                },
+            ] as ITicketGroup[],
+        } as ICity,
+
     }),
 });

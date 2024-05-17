@@ -4,6 +4,8 @@ import TicketPage from "../components/ticket/TicketPage.vue";
 import login from "../components/auth/Login.vue";
 import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
 import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
+import BukharaMainPage from "../components/city/Bukhara/MainPage.vue";
+import KhivaMainPage from "../components/city/Khiva/MainPage.vue";
 import OrderPage from "../components/ticket/OrderPage.vue";
 
 const routes = [
@@ -34,6 +36,16 @@ const routes = [
         path: '/tashkent',
         component: TashkentMainPage,
         name: 'Tashkent',
+    },
+    {
+        path: '/bukhara',
+        component: BukharaMainPage,
+        name: 'Bukhara',
+    },
+    {
+        path: '/khiva',
+        component: KhivaMainPage,
+        name: 'Khiva',
     },
 ]
 
