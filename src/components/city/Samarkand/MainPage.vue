@@ -1,17 +1,26 @@
 <script lang="ts">
 import ShowCalendar from "./ShowCalendar.vue"
-import {SamarkandTickets} from "../../../data/SamarkandTickets";
 import TicketGroup from "@/components/city/shared/TicketGroup.vue";
 import BottomButton from "@/components/cart/BottomButton.vue";
+import {defineComponent} from "vue";
+import {useTicketStore} from "@/stores/TicketStore.ts";
+import {TashkentTickets} from "@/data/TashkentTickets.ts";
 
-export default {
+export default defineComponent({
   components: {BottomButton, TicketGroup, ShowCalendar},
-  data() {
+  setup() {
+    const ticketStore = useTicketStore();
+
     return {
-      SamarkandTickets,
+      tickets: ticketStore.samarkand.tickets,
     };
   },
-};
+  data() {
+    return {
+      TashkentTickets,
+    };
+  },
+});
 </script>
 
 <template>
@@ -35,10 +44,7 @@ export default {
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <v-expansion-panel class="panel" :title="itemList.name" v-for="(itemList, index) in SamarkandTickets.data">
-        <TicketGroup :tickets="itemList.tickets"></TicketGroup>
-      </v-expansion-panel>
-
+      <TicketGroup :tickets="tickets"></TicketGroup>
     </v-expansion-panels>
 
     <BottomButton></BottomButton>

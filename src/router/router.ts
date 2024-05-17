@@ -4,19 +4,26 @@ import TicketPage from "../components/ticket/TicketPage.vue";
 import login from "../components/auth/Login.vue";
 import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
 import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
+import OrderPage from "../components/ticket/OrderPage.vue";
 
 const routes = [
     {
         path: '/',
         component: HomePage,
         name: 'HomePage',
-        meta: { isLogged: false },
+        // meta: { isLogged: false },
     },
     {
         path: '/tickets',
         component: TicketPage,
         name: 'Login',
-        meta: { isLogged: true },
+        // meta: { isLogged: false },
+    },
+    {
+        path: '/order',
+        component: OrderPage,
+        name: 'Order',
+        // meta: { isLogged: false },
     },
     {
         path: '/samarkand',

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TopMenu from "@/components/topMenu/TopMenu.vue";
 import Cart from "@/components/cart/Cart.vue";
+import TicketPage from "@/components/ticket/TicketPage.vue";
 </script>
 
 <template>

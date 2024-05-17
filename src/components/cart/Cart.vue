@@ -44,7 +44,7 @@ export default {
             {{ item.name }} - {{ item.price }} руб.
           </div>
         </v-card-text>
-        <v-btn color="green" to="/tickets">Купить</v-btn>
+        <v-btn color="green" to="/order">Купить</v-btn>
       </v-card>
     </v-dialog>
   </div>
@@ -55,6 +55,7 @@ export default {
   position: fixed;
   bottom: 1em;
   right: 1em;
+  z-index: 1;
 }
 
 .close-btn {
