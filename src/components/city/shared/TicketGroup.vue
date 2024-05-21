@@ -7,9 +7,9 @@
 
 // export default defineComponent({
 //   name: 'TicketComponent',
-  // props: {
-  //   tickets: Array,
-  // },
+// props: {
+//   tickets: Array,
+// },
 //   setup() {
 //     const ticketStore = useTicketStore();
 //
@@ -34,7 +34,7 @@ import {TashkentTickets} from "@/data/TashkentTickets.ts";
 // };
 
 export default defineComponent({
-  components: { BottomButton},
+  components: {BottomButton},
   name: 'TicketComponent',
   props: {
     tickets: Array,
@@ -56,10 +56,10 @@ export default defineComponent({
 
 <template>
 
-<!--  <v-expansion-panel
-          class="panel"
-          :title="itemList.name"
-          v-for="(itemList, index) in tickets">-->
+  <!--  <v-expansion-panel
+            class="panel"
+            :title="itemList.name"
+            v-for="(itemList, index) in tickets">-->
 
   <v-expansion-panel
       class="panel"
@@ -67,30 +67,34 @@ export default defineComponent({
       v-for="ticketGroup in tickets"
       :key="ticketGroup.name">
 
-<!--    <v-expansion-panel-text
-          class="panel-text"
-          v-for="(ticket, ticketsIndex) in itemList.tickets"
-          :key="ticketsIndex">-->
+    <!--    <v-expansion-panel-text
+              class="panel-text"
+              v-for="(ticket, ticketsIndex) in itemList.tickets"
+              :key="ticketsIndex">-->
     <v-expansion-panel-text
         class="panel-text"
         v-for="ticket in ticketGroup.tickets"
         :key="ticket.name">
 
       <div class="panel-content">
-        {{ ticket.name }}
-        {{ ticket.priceAdult }} sum
-        <div>
-          Взрослые
-          <button @click="ticket.adultTicketsNumber--">-</button>
-          <input type="number" v-model="ticket.adultTicketsNumber" min="0">
-          <button @click="ticket.adultTicketsNumber++" class="counter">+</button>
+        <div class="panel-content-name">
+          {{ ticket.name }}
         </div>
-        {{ ticket.priceChild }} sum
-        <div>
-          Детские
-          <button @click="ticket.childTicketsNumber--">-</button>
-          <input type="number" v-model="ticket.childTicketsNumber" min="0">
-          <button @click="ticket.childTicketsNumber++" class="counter">+</button>
+
+        <div class="tickets-choice">
+          <div>Взрослые {{ ticket.priceAdult }} sum</div>
+          <div class="types-tickets">
+            <button @click="ticket.adultTicketsNumber--" class="quantity-change">-</button>
+            <input type="number" v-model="ticket.adultTicketsNumber" min="0">
+            <button @click="ticket.adultTicketsNumber++" class="quantity-change">+</button>
+          </div>
+
+          <div>Детские {{ ticket.priceChild }} sum</div>
+          <div class="types-tickets">
+            <button @click="ticket.childTicketsNumber--" class="quantity-change">-</button>
+            <input type="number" v-model="ticket.childTicketsNumber" min="0">
+            <button @click="ticket.childTicketsNumber++" class="quantity-change">+</button>
+          </div>
         </div>
       </div>
     </v-expansion-panel-text>
@@ -112,20 +116,43 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-content: center;
   justify-content: space-between;
   align-items: center;
   margin: 1em;
 }
 
-.counter {
-  margin: 1em;
+.panel-content-name {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.types-tickets {
+  margin: 0 2em 0 1em;
+}
+
+.tickets-choice {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.quantity-change {
+  margin: 0.5em;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  position: relative;
+  border: 1px solid #000000;
 }
 
 input {
   outline: none;
   border: 1px solid black;
-  margin-left: 1em;
   width: 3rem;
 }
 </style>

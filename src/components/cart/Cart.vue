@@ -1,10 +1,18 @@
 <script lang="ts">
 import SvgIcon from '@jamescoyle/vue-icon';
 import {mdiCartOutline} from '@mdi/js';
+import {useTicketStore} from "@/stores/TicketStore.ts";
 
 export default {
   components: {
     SvgIcon
+  },
+  setup() {
+    const ticketStore = useTicketStore();
+
+    return {
+      tickets: ticketStore,
+    };
   },
   data() {
     return {
