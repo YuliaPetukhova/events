@@ -5,14 +5,21 @@ import BottomButton from "@/components/cart/BottomButton.vue";
 import {defineComponent} from "vue";
 import {useTicketStore} from "@/stores/TicketStore.ts";
 import {TashkentTickets} from "@/data/TashkentTickets.ts";
+import ticketGroup from "@/components/city/shared/TicketGroup.vue";
 
 export default defineComponent({
+  computed: {
+    ticketGroup() {
+      return ticketGroup
+    }
+  },
   components: {BottomButton, TicketGroup, ShowCalendar},
   setup() {
-    const ticketStore = useTicketStore();
+    // const samarkandTickets = useTicketStore().samarkand.tickets;
+    const samarkandTickets = useTicketStore().data.find((city: any) => city.name === 'samarkand');
 
     return {
-      tickets: ticketStore.samarkand.tickets,
+      tickets: samarkandTickets?.tickets,
     };
   },
   data() {
@@ -62,6 +69,7 @@ export default defineComponent({
 .title {
   margin: 1em 0;
   color: #ffffff;
+  font-size: 25px;
 }
 
 input {

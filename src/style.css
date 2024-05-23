@@ -1,30 +1,52 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/*:root {*/
+/*  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+/*  line-height: 1.5;*/
+/*  font-weight: 400;*/
 
-  color: rgba(255, 255, 255, 0.87);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/*  color: rgba(255, 255, 255, 0.87);*/
+/*  font-synthesis: none;*/
+/*  text-rendering: optimizeLegibility;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*}*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Steppe-Book';
+  src: url("public/assets/fonts/Steppe-Book.ttf");
+}
+
+@font-face {
+  font-family: 'Steppe-ExtraBold';
+  src: url("public/assets/fonts/Steppe-ExtraBold.ttf");
 }
 
 body {
-  margin: 0;
+  font-family: 'Steppe-Book', sans-serif;
+  background-color: #2b413d;
+  color: #FFFFFF;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1em;
   line-height: 1.1;
+  font-family: 'Steppe-ExtraBold', sans-serif;
 }
 
 #app {
   max-width: 1280px;
   margin: 0 0;
   text-align: center;
+  font-family: 'Steppe-ExtraBold', sans-serif;
 }
 .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
   max-height: 1em;
   position: relative;
 }
+
+/* You can add global styles to this file, and also import other style files */

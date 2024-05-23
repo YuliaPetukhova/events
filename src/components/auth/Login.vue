@@ -117,7 +117,7 @@ computed: {
   <v-dialog max-width="500">
     <template v-slot:activator="{ props: activatorProps }">
       <v-btn
-          color="green"
+          class="login-btn"
           v-bind="activatorProps"
           text="Войти"
           variant="flat"
@@ -172,7 +172,7 @@ computed: {
 
           <v-btn
               :loading="loading"
-              class="mt-2"
+              class="mt-2 login-btn"
               type="submit"
               block
               value="log in"
@@ -199,5 +199,11 @@ computed: {
 
 .form-field {
   padding-bottom: 1em;
+}
+
+.login-btn {
+  background-color: #98c9ab!important;
+  color: #FFFFFF!important;
+  font-family: 'Steppe-ExtraBold', sans-serif;
 }
 </style>

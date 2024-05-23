@@ -7,10 +7,10 @@ import {defineComponent} from "vue";
 export default defineComponent({
   components: {TicketGroup, BottomButton},
   setup() {
-    const ticketStore = useTicketStore();
+    const tashkentTickets = useTicketStore().data.find((city: any) => city.name === 'tashkent');
 
     return {
-      tickets: ticketStore.tashkent.tickets,
+      tickets: tashkentTickets?.tickets,
     };
   },
 });
@@ -42,6 +42,7 @@ export default defineComponent({
 .title {
   margin: 0.5em 0;
   color: rgb(255, 255, 255);
+  font-size: 25px;
 }
 
 input {

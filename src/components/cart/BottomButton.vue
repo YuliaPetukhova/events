@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
 import Cart from "@/components/cart/Cart.vue";
 </script>
 
 <template>
-  <v-btn class="byu-btn" color="green" to="/order">Купить</v-btn>
+  <v-btn class="byu-btn" to="/order" cl>Купить</v-btn>
   <Cart></Cart>
 </template>
 
@@ -14,5 +13,7 @@ import Cart from "@/components/cart/Cart.vue";
   z-index: 1;
   right: 6rem;
   bottom: 1em;
+  background-color: #98c9ab;
+  color: #FFFFFF;
 }
 </style>

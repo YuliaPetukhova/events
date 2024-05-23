@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import TopMenu from "@/components/topMenu/TopMenu.vue";
 import Cart from "@/components/cart/Cart.vue";
-import TicketPage from "@/components/ticket/TicketPage.vue";
 </script>
 
 <template>
   <div class="container">
+    <img src="/assets/plane.png" alt="plane" class="plane">
     <TopMenu></TopMenu>
     <router-view></router-view>
     <Cart></Cart>
@@ -14,9 +14,20 @@ import TicketPage from "@/components/ticket/TicketPage.vue";
 
 <style scoped lang='css'>
 .container {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   position: absolute;
-  background: url("/assets/tash.jpg") no-repeat center center fixed;
+}
+
+.plane {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: -1;
+  max-width: 1000px;
+  max-height: 770px;
+  top: -6em;
+  left: 3em;
+  opacity: 0.2;
 }
 </style>

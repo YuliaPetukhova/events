@@ -43,12 +43,12 @@ export default {
           <v-tooltip location="top">
             <template v-slot:activator="{ props: tooltip }">
               <v-btn
-                  color="blue"
+                  class="city-btn"
                   v-bind="mergeProps(menu, tooltip)"
               >
                 Города
               </v-btn>
-              <v-btn color="white">Билеты</v-btn>
+              <v-btn class="ticket-btn">Билеты</v-btn>
             </template>
           </v-tooltip>
         </template>
@@ -75,5 +75,14 @@ export default {
   align-content: center;
   justify-content: space-between;
   margin: 0.5em 1em;
+}
+
+.city-btn {
+  background-color: #3ca48c;
+  color: white;
+}
+
+.ticket-btn {
+  color: #3ca48c;
 }
 </style>
