@@ -2,9 +2,11 @@
 import SvgIcon from '@jamescoyle/vue-icon';
 import {mdiCartOutline} from '@mdi/js';
 import {useTicketStore} from "@/stores/TicketStore.ts";
+import TicketChoice from "@/components/sharedAll/TicketChoice.vue";
 
 export default {
   components: {
+    TicketChoice,
     SvgIcon
   },
   setup() {
@@ -20,18 +22,16 @@ export default {
     }
   },
   computed: {
-    TicketService() {
-      return TicketService
-    },
     totalAmount() {
-      let sum = 0;
-      // for (const ticketGroup of this.tickets) {
-      //   for (const ticket of ticketGroup.tickets) {
-      //     sum += ticket.priceAdult * ticket.adultTicketsNumber;
-      //     sum += ticket.priceChild * ticket.childTicketsNumber;
+      // let sum = 0;
+      //   for (const ticketGroup of city.tickets) {
+      //     for (const ticket of ticketGroup.tickets) {
+      //       sum += ticket.priceAdult * ticket.adultTicketsNumber;
+      //       sum += ticket.priceChild * ticket.childTicketsNumber;
+      //     }
       //   }
-      // }
-      return sum;
+      //
+      // return sum;
     },
   },
   methods: {
@@ -73,29 +73,7 @@ export default {
                     </div>
 
                     <div>
-                      <div class="adult">
-                        Взрослые
-                        <div class="tickets-choice">
-                          <div class="types-tickets">
-                            {{ ticket.priceAdult }} sum
-                            <button @click="ticket.adultTicketsNumber--" class="quantity-change">-</button>
-                            <input type="number" v-model="ticket.adultTicketsNumber" min="0">
-                            <button @click="ticket.adultTicketsNumber++" class="quantity-change">+</button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="child">
-                        Детские
-                        <div class="tickets-choice">
-                          <div class="types-tickets">
-                            {{ ticket.priceChild }} sum
-                            <button @click="ticket.childTicketsNumber--" class="quantity-change">-</button>
-                            <input type="number" v-model="ticket.childTicketsNumber" min="0">
-                            <button @click="ticket.childTicketsNumber++" class="quantity-change">+</button>
-                          </div>
-                        </div>
-                      </div>
+                      <TicketChoice :ticket="ticket"></TicketChoice>
                     </div>
                   </div>
                 </div>
@@ -147,21 +125,12 @@ export default {
 
 .tickets-choice {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
   flex-direction: row;
-}
-
-.quantity-change {
-  margin: 0.5em;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  position: relative;
-  border: 1px solid #000000;
+  align-content: center;
 }
 
 input {

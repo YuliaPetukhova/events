@@ -4,16 +4,7 @@ import BottomButton from "@/components/cart/BottomButton.vue";
 import {defineComponent} from "vue";
 import {useTicketStore} from "@/stores/TicketStore.ts";
 import ticketGroup from "@/components/city/shared/TicketGroup.vue";
-
-// export default {
-//   data() {
-//     return {
-//       SamarkandTickets,
-//       TashkentTickets
-//     }
-//   },
-//   components: {BottomButton, TicketGroup},
-// }
+import TicketChoice from "@/components/sharedAll/TicketChoice.vue";
 
 export default defineComponent({
   computed: {
@@ -21,7 +12,7 @@ export default defineComponent({
       return ticketGroup
     }
   },
-  components: {TicketGroup, BottomButton},
+  components: {TicketChoice, TicketGroup, BottomButton},
   setup() {
     return {
       useTicketStore: useTicketStore(),
@@ -50,49 +41,26 @@ export default defineComponent({
                 </div>
 
                 <div>
-                  <div class="adult">
-                    Взрослые
-                    <div class="tickets-choice">
-                      <div class="types-tickets">
-                        {{ ticket.priceAdult }} sum
-                        <button @click="ticket.adultTicketsNumber--" class="quantity-change">-</button>
-                        <input type="number" v-model="ticket.adultTicketsNumber" min="0">
-                        <button @click="ticket.adultTicketsNumber++" class="quantity-change">+</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="child">
-                    Детские
-                    <div class="tickets-choice">
-                      <div class="types-tickets">
-                        {{ ticket.priceChild }} sum
-                        <button @click="ticket.childTicketsNumber--" class="quantity-change">-</button>
-                        <input type="number" v-model="ticket.childTicketsNumber" min="0">
-                        <button @click="ticket.childTicketsNumber++" class="quantity-change">+</button>
-                      </div>
-                    </div>
-                  </div>
+                  <TicketChoice :ticket="ticket"></TicketChoice>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="total-amount">
-        <p>Общая сумма: {{ totalAmount }} sum</p>
-      </div>
     </v-card-text>
 
     <BottomButton></BottomButton>
 
   </div>
+  <div class="total-amount">
+    <p>Общая сумма: {{ totalAmount }} sum</p>
+  </div>
 </template>
 
 <style scoped lang="css">
 .container {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 h1 {
@@ -116,8 +84,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   margin: 0.5em 0;
-  border: 1px solid #ffffff;
-  background-color: #2b413d;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: #3ca48c;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
 }
 
 .item-name {
@@ -128,35 +97,21 @@ h1 {
 }
 
 .tickets-choice {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
   flex-direction: row;
 }
 
-.quantity-change {
-  margin: 0.5em;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  border-radius: 20px;
-  position: relative;
-  border: 1px solid #ffffff;
-}
-
-input {
-  outline: none;
-  color: #FFFFFF;
-  border: 1px solid #ffffff;
-  width: 3rem;
-}
-
 .total-amount {
   text-align: end;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   background-color: #2b413d;
-  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
   font-size: 20px;
 }
 </style>

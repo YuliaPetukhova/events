@@ -1,11 +1,12 @@
 <script lang="ts">
-
 import {defineComponent} from "vue";
 import BottomButton from "@/components/cart/BottomButton.vue";
 import {TashkentTickets} from "@/data/TashkentTickets.ts";
+import TicketPage from "@/components/ticket/TicketPage.vue";
+import TicketChoice from "@/components/sharedAll/TicketChoice.vue"
 
 export default defineComponent({
-  components: {BottomButton},
+  components: {TicketPage, BottomButton, TicketChoice},
   name: 'TicketComponent',
   props: {
     tickets: Array,
@@ -20,12 +21,6 @@ export default defineComponent({
 </script>
 
 <template>
-
-  <!--  <v-expansion-panel-->
-  <!--      class="panel"-->
-  <!--      :title="ticketGroup.name"-->
-  <!--      v-for="ticketGroup in tickets"-->
-  <!--      :key="ticketGroup.name">-->
   <v-expansion-panel
       class="panel"
       v-for="ticketGroup in tickets"
@@ -36,29 +31,16 @@ export default defineComponent({
         v-for="ticket in ticketGroup.tickets"
         :key="ticket.name">
 
-        <div class="panel-content">
-          <div class="panel-content-name">
-            {{ ticket.name }}
-          </div>
-
-          <div class="tickets-choice">
-            <div>Взрослые {{ ticket.priceAdult }} sum</div>
-            <div class="types-tickets">
-              <button @click="ticket.adultTicketsNumber--" class="quantity-change">-</button>
-              <input type="number" v-model="ticket.adultTicketsNumber" min="0">
-              <button @click="ticket.adultTicketsNumber++" class="quantity-change">+</button>
-            </div>
-
-            <div>Детские {{ ticket.priceChild }} sum</div>
-            <div class="types-tickets">
-              <button @click="ticket.childTicketsNumber--" class="quantity-change">-</button>
-              <input type="number" v-model="ticket.childTicketsNumber" min="0">
-              <button @click="ticket.childTicketsNumber++" class="quantity-change">+</button>
-            </div>
-          </div>
+      <div class="panel-content">
+        <div class="panel-content-name">
+          {{ ticket.name }}
         </div>
+
+        <TicketChoice :ticket="ticket"></TicketChoice>
+      </div>
     </v-expansion-panel-text>
   </v-expansion-panel>
+
 
 </template>
 

@@ -48,7 +48,7 @@ export default {
               >
                 Города
               </v-btn>
-              <v-btn class="ticket-btn">Билеты</v-btn>
+              <v-btn class="ticket-btn" to="/tickets">Билеты</v-btn>
             </template>
           </v-tooltip>
         </template>
