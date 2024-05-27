@@ -86,7 +86,7 @@ export default {
           </div>
         </v-card-text>
 
-        <v-btn color="green" to="/order">Купить</v-btn>
+        <v-btn class="byu-btn" to="/order">Купить</v-btn>
       </v-card>
     </v-dialog>
   </div>
@@ -137,5 +137,11 @@ input {
   outline: none;
   border: 1px solid black;
   width: 3rem;
+}
+
+.byu-btn {
+  background-color: #98c9ab;
+  font-weight: bold;
+  color: #FFFFFF;
 }
 </style>

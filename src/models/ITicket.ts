@@ -1,4 +1,4 @@
-export class ITicket {
+export interface ITicket {
     name: string| undefined;
     priceAdult: number| undefined;
     priceChild: number| undefined;
