@@ -18,14 +18,12 @@ const routes = [
         meta: {isLogged: true},
         component: () =>
             import("../components/ticket/TicketPage.vue"),
-        props: true,
     },
     {
         path: '/order',
         name: 'Order',
         component: () =>
             import("../components/ticket/OrderPage.vue"),
-        props: true,
     },
     {
         path: '/samarkand',
