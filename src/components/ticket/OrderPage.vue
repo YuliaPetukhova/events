@@ -7,16 +7,18 @@ import ticketGroup from "@/components/city/shared/TicketGroup.vue";
 import TicketChoice from "@/components/sharedAll/TicketChoice.vue";
 
 export default defineComponent({
-  computed: {
-    ticketGroup() {
-      return ticketGroup
-    }
-  },
   components: {TicketChoice, TicketGroup, BottomButton},
+
   setup() {
     return {
       useTicketStore: useTicketStore(),
     };
+  },
+
+  computed: {
+    ticketGroup() {
+      return ticketGroup;
+    },
   },
 });
 

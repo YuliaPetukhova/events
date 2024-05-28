@@ -1,13 +1,9 @@
 <script lang="ts">
-
-export default {
-}
+export default {}
 </script>
 
 <template>
-  <div class="container">
-    Оплаченные билеты
-  </div>
+  <div class="container">Оплаченные билеты</div>
 </template>
 
 <style scoped lang="css">

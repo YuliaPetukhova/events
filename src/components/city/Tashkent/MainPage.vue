@@ -6,6 +6,7 @@ import {defineComponent} from "vue";
 
 export default defineComponent({
   components: {TicketGroup, BottomButton},
+
   setup() {
     const tashkentTickets = useTicketStore().data.find((city: any) => city.name === 'tashkent');
 

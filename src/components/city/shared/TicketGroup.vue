@@ -7,7 +7,9 @@ import TicketChoice from "@/components/sharedAll/TicketChoice.vue"
 
 export default defineComponent({
   components: {TicketPage, BottomButton, TicketChoice},
+
   name: 'TicketComponent',
+
   props: {
     tickets: Array,
   },

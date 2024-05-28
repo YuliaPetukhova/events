@@ -13,6 +13,7 @@ export default defineComponent({
     SelectLanguage,
     FullCalendar,
   },
+
   data() {
     return {
       calendarOptions: {
@@ -33,6 +34,7 @@ export default defineComponent({
       } as CalendarOptions,
     }
   },
+
   methods: {
     handleDateSelect(model: EventApi) {
       let dateStartObj: Date = model.start!;
@@ -56,6 +58,7 @@ export default defineComponent({
         });
       }
     },
+
     getSelectedEvents() {
       console.log('new события:',
           (this.calendarOptions.events as EventInput[]).filter(event => event.isNew));

@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default {
   name: 'Login',
+
   data: () => ({
     isAuthenticated: isAuthenticated(),
     urlLogin: 'http://localhost/api/v1/family-auth/login',
@@ -45,8 +46,8 @@ export default {
         return "E-mail не соответсвует типу test@test.test"
       },
     ],
-
   }),
+
   methods: {
     async login() {
       this.loading = true;
@@ -103,8 +104,8 @@ export default {
         this.errorMessage = "Пароли не совпадают"
       }
     }
-  }
-  ,
+  },
+
   computed: {
     toggleMessage: function () {
       return this.isLogged ? this.stateObj.register.message : this.stateObj.login.message

@@ -8,12 +8,8 @@ import {TashkentTickets} from "@/data/TashkentTickets.ts";
 import ticketGroup from "@/components/city/shared/TicketGroup.vue";
 
 export default defineComponent({
-  computed: {
-    ticketGroup() {
-      return ticketGroup
-    }
-  },
   components: {BottomButton, TicketGroup, ShowCalendar},
+
   setup() {
     // const samarkandTickets = useTicketStore().samarkand.tickets;
     const samarkandTickets = useTicketStore().data.find((city: any) => city.name === 'samarkand');
@@ -22,11 +18,19 @@ export default defineComponent({
       tickets: samarkandTickets?.tickets,
     };
   },
+
   data() {
     return {
       TashkentTickets,
     };
   },
+
+  computed: {
+    ticketGroup() {
+      return ticketGroup
+    }
+  },
+
 });
 </script>
 

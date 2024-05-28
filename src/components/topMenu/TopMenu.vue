@@ -5,6 +5,7 @@ import Login from "@/components/auth/Login.vue";
 
 export default {
   components: {Login},
+
   data: () => ({
     isAuthenticated: isAuthenticated(),
     items: [
@@ -14,6 +15,7 @@ export default {
       {title: 'Хива', url: '/khiva'},
     ],
   }),
+
   methods: {
     mergeProps,
     selectSection(item) {

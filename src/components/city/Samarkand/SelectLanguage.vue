@@ -1,13 +1,5 @@
 <script lang="ts">
 export default {
-  methods: {
-    updateActivePlan(e: Event): void {
-      this.selectedButton = +(<HTMLInputElement>e.target).value;
-    },
-    isActive(id: number): boolean {
-      return this.selectedButton === id;
-    },
-  },
   data: () => ({
     selectedButton: 1 as number,
     buttons: [
@@ -48,6 +40,15 @@ export default {
       },
     ],
   }),
+
+  methods: {
+    updateActivePlan(e: Event): void {
+      this.selectedButton = +(<HTMLInputElement>e.target).value;
+    },
+    isActive(id: number): boolean {
+      return this.selectedButton === id;
+    },
+  },
 };
 </script>
 

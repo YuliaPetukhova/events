@@ -9,18 +9,21 @@ export default {
     TicketChoice,
     SvgIcon
   },
+
   setup() {
 
     return {
       useTicketStore: useTicketStore(),
     };
   },
+
   data() {
     return {
       path: mdiCartOutline,
       cartDialog: false,
     }
   },
+
   computed: {
     totalAmount() {
       // let sum = 0;
@@ -34,6 +37,7 @@ export default {
       // return sum;
     },
   },
+
   methods: {
     openCart() {
       this.cartDialog = true;
@@ -42,6 +46,7 @@ export default {
       this.cartDialog = false;
     },
   },
+
 };
 </script>
 
