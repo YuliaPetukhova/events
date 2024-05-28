@@ -6,6 +6,7 @@ import Login from "@/components/auth/Login.vue";
 export default {
   components: {Login},
   data: () => ({
+    isAuthenticated: isAuthenticated(),
     items: [
       {title: 'Ташкент', url: '/tashkent'},
       {title: 'Самарканд', url: '/samarkand'},
@@ -32,6 +33,11 @@ export default {
     },
   },
 }
+
+function isAuthenticated() {
+  const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
+  return !!accessToken;
+}
 </script>
 
 <template>
@@ -48,7 +54,13 @@ export default {
               >
                 Города
               </v-btn>
-              <v-btn class="ticket-btn" to="/tickets">Билеты</v-btn>
+              <v-btn
+                  class="ticket-btn"
+                  v-if="isAuthenticated"
+                  :to="{name:'TicketPage', params:{text:'tickets'}}"
+              >
+                Билеты
+              </v-btn>
             </template>
           </v-tooltip>
         </template>
@@ -64,7 +76,9 @@ export default {
       </v-menu>
     </div>
 
-    <div><Login></Login></div>
+    <div>
+      <Login></Login>
+    </div>
   </div>
 </template>
 

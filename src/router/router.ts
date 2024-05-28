@@ -1,31 +1,31 @@
 import {createWebHistory, createRouter, Router} from 'vue-router'
 import HomePage from "../components/HomePage.vue";
-import TicketPage from "../components/ticket/TicketPage.vue";
-import login from "../components/auth/Login.vue";
 import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
 import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
 import BukharaMainPage from "../components/city/Bukhara/MainPage.vue";
 import KhivaMainPage from "../components/city/Khiva/MainPage.vue";
-import OrderPage from "../components/ticket/OrderPage.vue";
 
 const routes = [
     {
         path: '/',
         component: HomePage,
         name: 'HomePage',
-        // meta: { isLogged: false },
+        meta: {isLogged: false},
     },
     {
         path: '/tickets',
-        component: TicketPage,
-        name: 'Login',
-        // meta: { isLogged: false },
+        name: 'TicketPage',
+        meta: {isLogged: true},
+        component: () =>
+            import("../components/ticket/TicketPage.vue"),
+        props: true,
     },
     {
         path: '/order',
-        component: OrderPage,
         name: 'Order',
-        // meta: { isLogged: false },
+        component: () =>
+            import("../components/ticket/OrderPage.vue"),
+        props: true,
     },
     {
         path: '/samarkand',
@@ -54,30 +54,20 @@ const router: Router = createRouter({
     routes,
 })
 export default router;
-// router.js
+
 router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.isLogged)) {
-        // этот путь требует авторизации, проверяем залогинен ли
-        // пользователь, и если нет, перенаправляем на страницу логина
-        if (!login.methods.login()) {
-            next({
-                path: '/',
-            })
+    if (to.matched.some((record) => record.meta.isLogged)) {
+        if (!isAuthenticated()) {
+            next({name: 'HomePage'});
         } else {
-            next()
+            next();
         }
     } else {
-        next() // всегда так или иначе нужно вызвать next()!
+        next();
     }
-})
+});
 
-
-// function checkUserAuthentication() {
-//     // Здесь вы можете реализовать свою собственную логику проверки аутентификации
-//     // Например, проверка наличия токена доступа или проверка сессии пользователя
-//
-//     // Предположим, что у вас есть некий токен доступа
-//     const accessToken = localStorage.getItem('access_token'); // Получение токена из localStorage
-//
-//     return !!accessToken;
-// }
+function isAuthenticated() {
+    const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
+    return !!accessToken;
+}

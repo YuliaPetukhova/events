@@ -3,7 +3,7 @@ import Cart from "@/components/cart/Cart.vue";
 </script>
 
 <template>
-  <v-btn class="byu-btn" to="/order" cl>Купить</v-btn>
+  <v-btn class="byu-btn" :to="{name:'Order', params:{text:'order'}}">Купить</v-btn>
   <Cart></Cart>
 </template>
 
@@ -13,7 +13,7 @@ import Cart from "@/components/cart/Cart.vue";
   z-index: 1;
   right: 6rem;
   bottom: 1em;
-  background-color: #98c9ab;
+  background-color: #38c56e;
   color: #FFFFFF;
 }
 </style>

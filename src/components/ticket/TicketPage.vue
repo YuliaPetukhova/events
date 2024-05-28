@@ -6,6 +6,7 @@ export default {
 
 <template>
   <div class="container">
+    Оплаченные билеты
   </div>
 </template>
 

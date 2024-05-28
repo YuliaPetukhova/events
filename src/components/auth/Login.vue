@@ -5,6 +5,7 @@ import axios from "axios";
 export default {
   name: 'Login',
   data: () => ({
+    isAuthenticated: isAuthenticated(),
     urlLogin: 'http://localhost/api/v1/family-auth/login',
     urlRegistration: 'http://localhost/api/v1/family-auth/registration',
     loading: false,
@@ -28,7 +29,7 @@ export default {
       value => {
         if (value?.length > 5) return true
 
-        return "Пароль должен содержать от 5 символов."
+        return "Пароль должен содержать не менее 5 символов."
       },
     ],
     email: "",
@@ -48,9 +49,10 @@ export default {
   }),
   methods: {
     async login() {
-      // this.loading = true;
+      this.loading = true;
 
-      // await axios.post(this.urlLogin, {
+      // await axios
+      //     .post(this.urlLogin, {
       //   email: this.email,
       //   password: this.password,
       // }).then(({data}) => {
@@ -64,12 +66,12 @@ export default {
       // );
 
       try {
+        // debugger;
         // Отправка запроса на сервер
         const response = await axios.post(this.urlLogin, {
           email: this.email,
           password: this.password,
         });
-
         // Обработка успешного ответа
         const {data} = response;
         this.user = data.user;
@@ -79,37 +81,39 @@ export default {
         this.$refs.form.reset();
         this.$router.push('/tickets');
       } catch (error) {
-        // Обработка ошибки
-        console.error('Ошибка входа:', error.message);
-        // Здесь вы можете показать сообщение об ошибке пользователю
-        // Например: this.errorMessage = 'Неверный логин или пароль';
+        // debugger;
+        window.alert('Ошибка входа: пользователь с такими данными не зарегистрирован в системе');
+        this.loading = false;
+        this.$refs.form.reset();
       }
     },
 
-  register() {
-    const user = {
-      email: this.email,
-      password: this.password,
-    };
+    register() {
+      const user = {
+        email: this.email,
+        password: this.password,
+      };
 
-    if (this.password === this.confirmPassword) {
-      this.isLogged = false;
-      this.errorMessage = "";
-      this.$refs.form.reset();
-      axios.post(this.urlRegistration, user);
-    } else {
-      this.errorMessage = "Пароли не совпадают"
+      if (this.password === this.confirmPassword) {
+        this.isLogged = false;
+        this.errorMessage = "";
+        this.$refs.form.reset();
+        axios.post(this.urlRegistration, user);
+      } else {
+        this.errorMessage = "Пароли не совпадают"
+      }
     }
   }
+  ,
+  computed: {
+    toggleMessage: function () {
+      return this.isLogged ? this.stateObj.register.message : this.stateObj.login.message
+    }
+  },
 }
-,
-computed: {
-  toggleMessage: function () {
-    return this.isLogged ? this.stateObj.register.message : this.stateObj.login.message
-  }
-}
-,
-
+function isAuthenticated() {
+  const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
+  return !!accessToken;
 }
 </script>
 
@@ -117,12 +121,14 @@ computed: {
   <v-dialog max-width="500">
     <template v-slot:activator="{ props: activatorProps }">
       <v-btn
+          v-if="!isAuthenticated"
           class="login-btn"
           v-bind="activatorProps"
           text="Войти"
           variant="flat"
       ></v-btn>
     </template>
+
 
     <template v-slot:default="{ isActive }">
 
@@ -168,7 +174,7 @@ computed: {
               placeholder="Введите пароль"
               required
           ></v-text-field>
-          <div class="red--text"> {{ errorMessage }}</div>
+          <div class="red-text"> {{ errorMessage }}</div>
 
           <v-btn
               :loading="loading"
@@ -202,8 +208,8 @@ computed: {
 }
 
 .login-btn {
-  background-color: #98c9ab!important;
-  color: #FFFFFF!important;
+  background-color: #38c56e !important;
+  color: #FFFFFF !important;
   font-family: 'Steppe-ExtraBold', sans-serif;
 }
 </style>
