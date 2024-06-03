@@ -23,11 +23,11 @@ export default defineComponent({
     <h1 class="title">Билеты на достопримечательности Ташкента</h1>
     <v-expansion-panels multiple>
 
-      <TicketGroup :tickets="tickets"></TicketGroup>
+      <TicketGroup :tickets.sync="tickets"></TicketGroup>
 
     </v-expansion-panels>
 
-    <BottomButton></BottomButton>
+    <BottomButton/>
   </div>
 
 </template>

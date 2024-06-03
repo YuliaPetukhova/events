@@ -52,7 +52,7 @@ export default defineComponent({
       </div>
     </v-card-text>
 
-    <BottomButton></BottomButton>
+    <BottomButton/>
 
   </div>
   <div class="total-amount">
@@ -110,9 +110,9 @@ h1 {
   text-align: end;
   position: fixed;
   bottom: 0;
-  left: 0;
+  right: 10em;
   background-color: #2b413d;
-  margin-left: 1em;
+  margin-right: 1em;
   margin-bottom: 1em;
   font-size: 20px;
 }

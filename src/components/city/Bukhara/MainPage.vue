@@ -23,7 +23,7 @@ export default defineComponent({
     <h1 class="title">Билеты на достопримечательности Бухары</h1>
     <v-expansion-panels multiple>
 
-      <TicketGroup :tickets="tickets"></TicketGroup>
+      <TicketGroup :tickets.sync="tickets"></TicketGroup>
 
     </v-expansion-panels>
 

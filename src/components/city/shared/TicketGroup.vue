@@ -7,7 +7,6 @@ import TicketChoice from "@/components/sharedAll/TicketChoice.vue"
 
 export default defineComponent({
   components: {TicketPage, BottomButton, TicketChoice},
-
   name: 'TicketComponent',
 
   props: {
@@ -38,7 +37,7 @@ export default defineComponent({
           {{ ticket.name }}
         </div>
 
-        <TicketChoice :ticket="ticket"></TicketChoice>
+        <TicketChoice :ticket.sync="ticket"></TicketChoice>
       </div>
     </v-expansion-panel-text>
   </v-expansion-panel>

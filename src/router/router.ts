@@ -4,13 +4,14 @@ import SamarkandMainPage from "../components/city/Samarkand/MainPage.vue";
 import TashkentMainPage from "../components/city/Tashkent/MainPage.vue";
 import BukharaMainPage from "../components/city/Bukhara/MainPage.vue";
 import KhivaMainPage from "../components/city/Khiva/MainPage.vue";
+import TicketPage from "../components/ticket/TicketPage.vue";
+import {useUserStore} from "../stores/UserStore";
 
 const routes = [
     {
         path: '/',
         component: HomePage,
         name: 'HomePage',
-        meta: {isLogged: false},
     },
     {
         path: '/tickets',
@@ -55,7 +56,7 @@ export default router;
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.isLogged)) {
-        if (!isAuthenticated()) {
+        if (!useUserStore().getters.isAuthenticated()) {
             next({name: 'HomePage'});
         } else {
             next();
@@ -65,7 +66,7 @@ router.beforeEach((to, from, next) => {
     }
 });
 
-function isAuthenticated() {
-    const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
-    return !!accessToken;
-}
+// function isAuthenticated() {
+//     const accessToken = sessionStorage.getItem('loginUser'); // Получение токена из localStorage
+//     return !!accessToken;
+// }

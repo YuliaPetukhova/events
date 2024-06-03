@@ -2,12 +2,24 @@
 import {mergeProps} from 'vue'
 import router from '../../router/router'
 import Login from "@/components/auth/Login.vue";
+import {useUserStore} from "@/stores/UserStore.ts";
 
 export default {
   components: {Login},
+  setup() {
+    const userStore = useUserStore();
+
+    const logout = () => {
+      userStore.logout();
+      router.push('/');
+    };
+    return {
+      logout,
+      useUserStore: useUserStore(),
+    };
+  },
 
   data: () => ({
-    isAuthenticated: isAuthenticated(),
     items: [
       {title: 'Ташкент', url: '/tashkent'},
       {title: 'Самарканд', url: '/samarkand'},
@@ -16,9 +28,18 @@ export default {
     ],
   }),
 
+  computed: {
+    isAuthenticated() {
+      const userStore = useUserStore();
+      return userStore.getters.isAuthenticated();
+    },
+  },
+
   methods: {
+    useUserStore,
     mergeProps,
     selectSection(item) {
+
       switch (item.title) {
         case 'Ташкент':
           router.push(item.url)
@@ -36,10 +57,6 @@ export default {
   },
 }
 
-function isAuthenticated() {
-  const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
-  return !!accessToken;
-}
 </script>
 
 <template>
@@ -52,14 +69,14 @@ function isAuthenticated() {
             <template v-slot:activator="{ props: tooltip }">
               <v-btn
                   class="city-btn"
-                  v-bind="mergeProps(menu, tooltip)"
+                  v-bind="menu"
               >
                 Города
               </v-btn>
               <v-btn
                   class="ticket-btn"
                   v-if="isAuthenticated"
-                  :to="{name:'TicketPage', params:{text:'tickets'}}"
+                  :to="{name:'TicketPage'}"
               >
                 Билеты
               </v-btn>
@@ -78,9 +95,13 @@ function isAuthenticated() {
       </v-menu>
     </div>
 
-    <div>
-      <Login></Login>
+    <div v-if="!isAuthenticated">
+      <Login/>
     </div>
+
+    <v-btn @click="logout" v-if="isAuthenticated" class="logout">
+      Выход
+    </v-btn>
   </div>
 </template>
 
@@ -100,5 +121,11 @@ function isAuthenticated() {
 
 .ticket-btn {
   color: #3ca48c;
+}
+
+.logout {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.66);
+  color: white;
 }
 </style>

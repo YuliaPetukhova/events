@@ -6,9 +6,9 @@ import Cart from "@/components/cart/Cart.vue";
 <template>
   <div class="container">
     <img src="/assets/plane.png" alt="plane" class="plane">
-    <TopMenu></TopMenu>
-    <router-view></router-view>
-    <Cart></Cart>
+    <TopMenu/>
+    <router-view/>
+    <Cart/>
   </div>
 </template>
 

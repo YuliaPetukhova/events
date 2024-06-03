@@ -11,7 +11,6 @@ export default {
   },
 
   setup() {
-
     return {
       useTicketStore: useTicketStore(),
     };
@@ -63,7 +62,7 @@ export default {
         </v-card-actions>
         <v-card-title>Ваша корзина</v-card-title>
         <v-card-text>
-          <div v-for="(city, index) in useTicketStore.getters.filteredTickets(useTicketStore)">
+          <div v-for="(city, index) in useTicketStore.getters.filteredTickets(useTicketStore)" :key="index">
             {{ city.name }}
 
             <div v-for="ticketGroup in city.tickets">
@@ -78,7 +77,7 @@ export default {
                     </div>
 
                     <div>
-                      <TicketChoice :ticket="ticket"></TicketChoice>
+                      <TicketChoice :ticket.sync="ticket"></TicketChoice>
                     </div>
                   </div>
                 </div>
@@ -91,7 +90,7 @@ export default {
           </div>
         </v-card-text>
 
-        <v-btn class="byu-btn" :to="{name:'Order', params:{text:'order'}}">
+        <v-btn class="byu-btn" :to="{name:'Order'}">
           Купить
         </v-btn>
       </v-card>

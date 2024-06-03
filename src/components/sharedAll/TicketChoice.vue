@@ -8,6 +8,12 @@ export default defineComponent({
     ticket: Object as ITicket,
   },
 
+  computed: {
+    ticketGroup() {
+      return ticketGroup;
+    },
+  },
+
   methods: {
     decrementAdultTickets() {
       if (this.ticket.adultTicketsNumber > 0) {
@@ -24,12 +30,6 @@ export default defineComponent({
     },
     incrementChildTickets() {
       this.ticket.childTicketsNumber++;
-    },
-  },
-
-  computed: {
-    ticketGroup() {
-      return ticketGroup;
     },
   },
 });

@@ -1,12 +1,11 @@
 <script>
 import * as vm from "vm";
 import axios from "axios";
+import {useUserStore} from "@/stores/UserStore.ts";
 
 export default {
   name: 'Login',
-
   data: () => ({
-    isAuthenticated: isAuthenticated(),
     urlLogin: 'http://localhost/api/v1/family-auth/login',
     urlRegistration: 'http://localhost/api/v1/family-auth/registration',
     loading: false,
@@ -48,73 +47,42 @@ export default {
     ],
   }),
 
-  methods: {
-    async login() {
-      this.loading = true;
-
-      // await axios
-      //     .post(this.urlLogin, {
-      //   email: this.email,
-      //   password: this.password,
-      // }).then(({data}) => {
-      //       this.user = data.user;
-      //       this.isRegister = true;
-      //       window.localStorage.setItem('loginUser', JSON.stringify(this.user));
-      //       this.loading = false;
-      //       this.$refs.form.reset();
-      //       this.$router.push('/tickets');
-      //     }
-      // );
-
-      try {
-        // debugger;
-        // Отправка запроса на сервер
-        const response = await axios.post(this.urlLogin, {
-          email: this.email,
-          password: this.password,
-        });
-        // Обработка успешного ответа
-        const {data} = response;
-        this.user = data.user;
-        this.isLogged = true;
-        window.localStorage.setItem('loginUser', JSON.stringify(this.user));
-        this.loading = false;
-        this.$refs.form.reset();
-        this.$router.push('/tickets');
-      } catch (error) {
-        // debugger;
-        window.alert('Ошибка входа: пользователь с такими данными не зарегистрирован в системе');
-        this.loading = false;
-        this.$refs.form.reset();
-      }
-    },
-
-    register() {
-      const user = {
-        email: this.email,
-        password: this.password,
-      };
-
-      if (this.password === this.confirmPassword) {
-        this.isLogged = false;
-        this.errorMessage = "";
-        this.$refs.form.reset();
-        axios.post(this.urlRegistration, user);
-      } else {
-        this.errorMessage = "Пароли не совпадают"
-      }
-    }
-  },
-
   computed: {
     toggleMessage: function () {
       return this.isLogged ? this.stateObj.register.message : this.stateObj.login.message
     }
   },
-}
-function isAuthenticated() {
-  const accessToken = localStorage.getItem('loginUser'); // Получение токена из localStorage
-  return !!accessToken;
+
+  methods: {
+    useUserStore,
+    async login() {
+      this.loading = true;
+
+      await useUserStore().login({
+        email: this.email,
+        password: this.password,
+      });
+
+      this.isLogged = true;
+      this.loading = false;
+      this.$router.push('/tickets');
+    },
+
+    async register() {
+
+      if (this.password === this.confirmPassword) {
+        await useUserStore().register({
+          email: this.email,
+          password: this.password,
+        });
+        this.isLogged = false;
+        this.errorMessage = "";
+        this.$refs.form.reset();
+      } else {
+        this.errorMessage = "Пароли не совпадают"
+      }
+    }
+  },
 }
 </script>
 
@@ -122,7 +90,6 @@ function isAuthenticated() {
   <v-dialog max-width="500">
     <template v-slot:activator="{ props: activatorProps }">
       <v-btn
-          v-if="!isAuthenticated"
           class="login-btn"
           v-bind="activatorProps"
           text="Войти"
@@ -186,7 +153,7 @@ function isAuthenticated() {
           >
             {{ isLogged ? stateObj.register.name : stateObj.login.name }}
           </v-btn>
-          <div class="grey--text mt-4" @click="isLogged = !isLogged;">
+          <div class="grey--text mt-4 auth" @click="isLogged = !isLogged;">
             {{ toggleMessage }}
           </div>
 
@@ -212,5 +179,9 @@ function isAuthenticated() {
   background-color: #38c56e !important;
   color: #FFFFFF !important;
   font-family: 'Steppe-ExtraBold', sans-serif;
+}
+
+.auth {
+  cursor: pointer;
 }
 </style>

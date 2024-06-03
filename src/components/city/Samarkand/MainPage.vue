@@ -55,7 +55,7 @@ export default defineComponent({
         </v-expansion-panel-text>
       </v-expansion-panel>
 
-      <TicketGroup :tickets="tickets"></TicketGroup>
+      <TicketGroup :tickets.sync="tickets"></TicketGroup>
     </v-expansion-panels>
 
     <BottomButton></BottomButton>
