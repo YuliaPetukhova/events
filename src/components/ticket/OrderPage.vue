@@ -28,7 +28,7 @@ export default defineComponent({
   <div class="container">
     <h1 class="title">Выбранные билеты</h1>
     <v-card-text class="all-tickets">
-      <div v-for="(city, index) in useTicketStore.getters.filteredTickets(useTicketStore)">
+      <div v-for="(city, index) in useTicketStore.getters.filteredTickets(useTicketStore)" :key="index">
         <h2 class="title">Город: {{ city.name }}</h2>
 
         <div v-for="ticketGroup in city.tickets">
